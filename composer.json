@@ -1,0 +1,24 @@
+{
+    "name": "velocity-service",
+    "description": "silex service for velocity payment system",
+    "license": "MIT",
+    "version": "0.0.1",
+
+    "require": {
+        "silex/silex": "~1.2"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    },
+
+    "config": {
+        "bin-dir": "bin/"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Hatch\\App\\": "src"
+        }
+    }
+}
