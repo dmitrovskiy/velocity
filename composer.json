@@ -1,5 +1,5 @@
 {
-    "name": "velocity-service",
+    "name": "dmitrovskiy/velocityservice",
     "description": "silex service for velocity payment system",
     "license": "MIT",
     "version": "0.0.1",
