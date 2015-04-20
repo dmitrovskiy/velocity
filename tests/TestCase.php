@@ -2,6 +2,10 @@
 
 namespace Dmitrovskiy\VelocityService\Tests;
 
-class TestCase extends \PHPUnit_Framework_TestCase
-{
-}
+/**
+ * Class TestCase
+ *
+ * @package Dmitrovskiy\VelocityService\Tests
+ */
+abstract class TestCase extends \PHPUnit_Framework_TestCase
+{ }
