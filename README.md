@@ -2,7 +2,9 @@
 
 ## Using
 
-To use velocity service provider you need to inject values:
+To use it in your project you should add the package `"dmitrovskiy/velocityservice": "dev-master"` into your `composer.json` file.
+
+Before using velocity service provider you need to inject values:
 
 ```php
 $app = new Application();
