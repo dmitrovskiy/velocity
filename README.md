@@ -2,6 +2,8 @@
 
 ## Using
 
+### Single velocity processor
+
 To use it in your project you should add the package `"dmitrovskiy/velocityservice": "dev-master"` into your `composer.json` file.
 
 Before using velocity service provider you need to inject values:
@@ -20,5 +22,27 @@ $app->register(new VelocityServiceProvider(), array(
 The value `velocity.isTestAccount` is optional and false by default.
 
 After registering the service you be able to use `$app['velocity.processor']` to communicate with velocity service.
+
+### Velocity processor factory
+
+That to use several instances of velocity processor you need `$app['velocity.processor.factory']`.
+
+```php
+$applicationProfileId = 14644;
+$merchantProfileId = "Test Merchant HC";
+$workflowId = 2317000001;
+$identityToken = 'yourToken';
+$isTestAccount = true;
+
+$velocityProcessorFactory = $app['velocity.processor.factory'];
+
+$processor = $velocityProcessorFactory->getProcessor(
+    $applicationProfileId,
+    $merchantProfileId,
+    $workflowId,
+    $identityToken,
+    $isTestAccount
+);
+```
 
 
