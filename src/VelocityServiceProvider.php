@@ -8,6 +8,11 @@ use Silex\ServiceProviderInterface;
 
 require_once __DIR__ . '/sdk/Velocity.php';
 
+/**
+ * Class VelocityServiceProvider
+ *
+ * @package Dmitrovskiy\VelocityService
+ */
 class VelocityServiceProvider implements ServiceProviderInterface
 {
     protected $injectionList
@@ -34,16 +39,25 @@ class VelocityServiceProvider implements ServiceProviderInterface
                 $this->validateInjectingValues($app);
 
                 try {
-                    return new \VelocityProcessor(
+                    /** @var VelocityProcessorFactory $velocityProcessorFactory */
+                    $velocityProcessorFactory
+                        = $app['velocity.processor.factory'];
+                    return $velocityProcessorFactory->getProcessor(
                         $app['velocity.applicationProfileId'],
                         $app['velocity.merchantProfileId'],
                         $app['velocity.workflowId'],
-                        $app['velocity.isTestAccount'],
-                        $app['velocity.identityToken']
+                        $app['velocity.identityToken'],
+                        $app['velocity.isTestAccount']
                     );
                 } catch (\Exception $e) {
                     return $e->getMessage();
                 }
+            }
+        );
+
+        $app['velocity.processor.factory'] = $app->share(
+            function () use ($app) {
+                return new VelocityProcessorFactory();
             }
         );
     }
